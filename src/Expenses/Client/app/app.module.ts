@@ -21,11 +21,13 @@ import { ExpensesComponent } from './containers/expenses/expenses.component';
 import { UsersComponent } from './containers/users/users.component';
 import { NotFoundComponent } from './containers/not-found/not-found.component';
 import { TotalUsersComponent } from './containers/totalUsers/totalUsers.component';
+import { TotalUserListComponent } from './components/total-users/totaluser-list.component';
 
 
 
 import { LinkService } from './shared/link.service';
 import { UserService } from './shared/user.service';
+import { TotalUserService } from './shared/totalUser.service';
 import { ConnectionResolver } from './shared/route.resolver';
 import { ORIGIN_URL } from './shared/constants/baseurl.constants';
 import { TransferHttpModule } from '../modules/transfer-http/transfer-http.module';
@@ -78,7 +80,9 @@ export function createTranslateLoader(http: Http, baseHref) {
         UserFormComponent,
         ChangePasswordComponent,
         ChangeMyPasswordComponent,
-        ChangeUserPasswordComponent
+        ChangeUserPasswordComponent,
+        TotalUserListComponent
+
     ],
     imports: [
         CommonModule,
@@ -127,7 +131,7 @@ export function createTranslateLoader(http: Http, baseHref) {
             {
                 path: 'totalUsers', component: TotalUsersComponent, canActivate: [AuthGuard],
                 children: [
-                    { path: '', component: TotalUsersComponent },                             
+                    { path: '', component: TotalUserListComponent },                             
                 ]
             },
             { path: 'login', component: LoginComponent },
@@ -148,7 +152,8 @@ export function createTranslateLoader(http: Http, baseHref) {
         FilterHelper,
         ExpenseResolve,
         UserResolve,
-        TotalUserResolve
+        TotalUserResolve,
+        TotalUserService
     ]
 })
 export class AppModule {

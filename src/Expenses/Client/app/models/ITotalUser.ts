@@ -1,4 +1,4 @@
-﻿export interface IUser {
+﻿export interface ITotalUser {
     id?: number;
     username?: string;
     firstName?: string;

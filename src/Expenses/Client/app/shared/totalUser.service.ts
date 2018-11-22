@@ -1,7 +1,7 @@
 ﻿import { Injectable, Inject } from '@angular/core';
 import { URLSearchParams, RequestOptionsArgs } from '@angular/http';
 import { ORIGIN_URL } from './constants/baseurl.constants';
-import { IUser } from '../models/ITotalUser';
+import { ITotalUser } from '../models/ITotalUser';
 import { Observable } from 'rxjs/Observable';
 import { HttpService } from "./http.service";
 
@@ -22,15 +22,15 @@ export class TotalUserService {
             .get(`${this.baseUrl}/api/users/` + id);
     }
 
-    delete(item: IUser): Observable<any> {
+    delete(item: ITotalUser): Observable<any> {
         return this.http.delete(`${this.baseUrl}/api/users/` + item.id);
     }
 
-    update(item: IUser): Observable<any> {
+    update(item: ITotalUser): Observable<any> {
         return this.http.put(`${this.baseUrl}/api/users/` + item.id, item);
     }
 
-    add(item: IUser): Observable<any> {
+    add(item: ITotalUser): Observable<any> {
         return this.http.post(`${this.baseUrl}/api/users`, item);
     }
 
